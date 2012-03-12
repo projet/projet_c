@@ -1,11 +1,13 @@
 #include <stdio.h>
 
-#include "entiers.h"
+#include "entier.h"
 
 
 int main(int argc, char **argv)
 {
-   //TODO: a faire... ne pas surcharger ;)
+   /*
+    *	TODO: a faire...
+    */
    printf("test");
    return 0;
 }

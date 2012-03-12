@@ -17,7 +17,8 @@ typedef Cell* Entier;
 /*
  *	fonctions à implementer
  */
-
+Entier loadEntier(char* entier);
+void freeEntier(Entier);
 
 
 
