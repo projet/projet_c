@@ -1,0 +1,8 @@
+# sauvegarde inutiles #
+*~
+
+# objets #
+*.o
+
+# executable #
+projet
