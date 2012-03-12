@@ -21,11 +21,4 @@ Entier loadEntier(char* entier);
 void freeEntier(Entier);
 
 
-
-
-/*
- *	fonction déja implémentés
- */
-
-
 #endif

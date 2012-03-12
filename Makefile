@@ -1,4 +1,4 @@
-FILE = entier.c main.c
+FILE = intervalle.c entier.c main.c
 EXE = projet
 
 
