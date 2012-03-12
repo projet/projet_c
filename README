@@ -1,0 +1,12 @@
+Pour ajouter un fichier et effectuer un commit (en local)
+$ git add <fileName>
+$ git commit -m 'commentaire pour le commit'
+
+Pour ajouter une branche 
+$ git remote add origin git@github.com:<username>/Hello-World.git
+
+mettre a jour les sources du serveur
+$ git push -u origin master
+
+
+
