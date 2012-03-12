@@ -6,12 +6,12 @@
  *	Sous forme de list ou bit par bit
  *	comme en algo (plus long)
  */
-typedef struct cell{
+typedef struct cell_entier{
   int val;
-  struct cell *next;
-}Cell;
+  struct cell_entier *next;
+}Cell_entier;
 
-typedef Cell* Entier;
+typedef Cell_entier* Entier;
 
 
 /*
