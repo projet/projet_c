@@ -5,6 +5,7 @@
 
 int main(int argc, char **argv)
 {
-	int coucou = 5 + 6;
-	return 0;
+   //TODO: a faire... ne pas surcharger ;)
+   printf("test");
+   return 0;
 }

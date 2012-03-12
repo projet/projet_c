@@ -1,15 +1,30 @@
 #ifndef ENTIERS_H
 #define ENTIERS_H
 
-typedef struct entier{
+/*
+ *	A voir comment on l'implémente
+ *	Sous forme de list ou bit par bit
+ *	comme en algo (plus long)
+ */
+typedef struct cell{
   int val;
-  struct entier *next;
-}Entier;
+  struct cell *next;
+}Cell;
+
+typedef Cell* Entier;
+
+
+/*
+ *	fonctions à implementer
+ */
 
 
 
-/* Modification */ 
 
-int SUM(int a, int b);
+
+/*
+ *	fonction déja implémentés
+ */
+
 
 #endif
