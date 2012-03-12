@@ -3,10 +3,10 @@
 
 
 /*
- *	Fonction qu'il faut donner en param (?? pointeur ???)
- *	change en fonction du type de liste
+ *	Fonction qui pose probmème
+ *	elle ne connais pas l'element
  */
-int getValue(Elem elem){
+Elem getValue(Elem elem){
   return elem;
 }
 
@@ -17,7 +17,6 @@ void printList(List l){
   }
   printf("\n");
 }
-
 
 
 Cell* allouer(Elem elem){
@@ -31,7 +30,7 @@ Cell* allouer(Elem elem){
 }
 
 void liberer(List *l){
-    while(l != NULL){
+    while(*l != NULL){
       Cell *cell = *l;
       *l = (*l)->next;
       free(cell);      

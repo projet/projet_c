@@ -4,7 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*	Elem a redéfinir dans les autres fichier */
+/*
 typedef int Elem;
+*/
 
 typedef struct cell{
   Elem elem;
@@ -14,9 +17,16 @@ typedef struct cell{
 typedef Cell* List;
 
 /*
- *	TODO:fonctions des lists
+ *	TODO:fonctions
  */
+Elem getValue(Cell);
 void printList(List l);
+  
+
+
+/*
+ *	fonctions faites.
+ */
 Cell* allouer(Elem elem);
 void liberer(List *l);
 void insertFirst(List *l, Elem elem);

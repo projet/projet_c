@@ -1,13 +1,17 @@
 #ifndef ENTIERS_H
 #define ENTIERS_H
 
+typedef int elem;
+#include "list.h"
+
 /*
  *	A voir comment on l'implémente
  *	Sous forme de list ou bit par bit
- *	comme en algo (plus long)
+ *	comme en algo
  */
 typedef struct cell_entier{
-  int val;
+  /* "Quelque soit le système vous êtes sur que char fait 4 octets!" Mr Paumier */
+  char val;
   struct cell_entier *next;
 }Cell_entier;
 
