@@ -1,5 +1,5 @@
 #include "entiers.h"
 
 int SUM(int a, int b){
-  printf("coucou\n");
+  printf("la cest moi\n");
 }
