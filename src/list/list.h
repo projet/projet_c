@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*	Elem a redéfinir dans les autres fichier */
 /*
@@ -22,11 +23,12 @@ typedef struct cell {
  *	Une liste connais la taille d'une cellule et un pointeur vers la première cellule
  */
 typedef Cell* List_Chaine;
-typedef struct list {
+typedef struct list_param {
   int length;  
   int sizeofvalue;
   List_Chaine first;
-}List;
+}List_Param;
+typedef List_Param* List;
 
 
 /*
@@ -36,7 +38,7 @@ List initList(int size);
 void insertFirst(List l, void* value);
 
 
-Cell* allouer( List l, void* value);
+Cell* allouer(void* value, int sizeofvalue);
 void liberer(List l);
 
 

@@ -47,7 +47,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 #ne passe pas par les .o#
 #cree un executable/test# 
 define TEST_COMPILE
-	-$(CC) $(DEBUG) $(FLAGS) $^ -o $(TEST_DIR)$(@) 
+	$(CC) $(DEBUG) $(FLAGS) $^ -D $@=1 -o $(TEST_DIR)$(@) 
 	@echo "Le test: $(@) s'est correctement compilé"
 endef
 
@@ -60,9 +60,6 @@ test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/li
 #	Test....	#
 test_list: src/list/list.c
 	$(TEST_COMPILE)
-
-
-
 
 
 

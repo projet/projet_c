@@ -10,14 +10,7 @@
  * -o/--output F3: fichier de sortie. Par défaut, le résultat sera affiché sur la sortie standard du programme.
  */
 
-
-/*
-*	Pour faire un main() dans nos projet pour tester vaut mieu masquer celui la
-
 int main(int argc, char **argv){
-*/
-
-int test(){
    Intervalle_list inclusion;
    Intervalle_list exclusion;
    Intervalle_list resultat;
