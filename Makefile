@@ -20,8 +20,8 @@ TEST_DIR = test/
 #	clean: clean_all + clean_test	#
 all : exe test
 test: $(TEST)
-clean: clean_all clean_test
-
+clean: clean_obj clean_test
+help: h
 
 #	les paramètres de compilation	#
 CC = gcc
@@ -31,6 +31,10 @@ DEBUG = -g
 #	Les objets depuis un .c		#
 OBJECTS = $(FILE:%.c=$(OBJ_DIR)%.o)
 # SRC = $(FILE:%.c=$(SRC_DIR)%.c) # pas utilisé
+
+#	help		#
+h:
+	@echo "Utilisation: make [all|exe|test|clean|clean_obj|clean_test]"
 
 # 	le make du projet	 #
 exe : $(OBJECTS) 
@@ -44,7 +48,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 
 
 #	Les cleans	#
-clean_all : 
+clean_obj : 
 	rm -f $(OBJECTS) $(EXE)
 	@echo "Les Objets et exécutables ont bien étés supprimés"
 
@@ -61,10 +65,11 @@ define TEST_COMPILE
 	@echo "Le test: $(@) s'est correctement compilé"
 endef
 
-#	ecrire les make pour les test ici	#
+#	Ecrire les make pour les test ici	#
+#	-<nom du test>: <dépendances>, <...>,	#
+#	-rajouter <le nom du test> dans TEST 	#
 test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c 
 	$(TEST_COMPILE)
 
 test_list: src/list/list.c
 	$(TEST_COMPILE)
-
