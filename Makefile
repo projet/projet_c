@@ -58,7 +58,7 @@ endef
 
 #	Ecrire les make pour les test ici	#
 #	-<nom du test>: <dépendances>, <...>,	#
-#	-rajouter <le nom du test> dans TEST 	#
+#	-rajouter <le nom du test> dans $(TEST)	#
 test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c src/list/cell.c 
 	$(TEST_COMPILE)
 test_list: src/list/list.c src/list/cell.c

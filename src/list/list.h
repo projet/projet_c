@@ -11,7 +11,6 @@
  */
 typedef struct list_param {
   int length;  
-  int sizeofvalue;
   Cell_List first;
 }List_Param;
 typedef List_Param* List;
@@ -25,7 +24,7 @@ typedef List_Param* List;
 /*
  *	fonctions faites.
  */
-List initList(int size);
+List initList();
 void insertFirst(List l, void* value);
 void liberer(List l);
 

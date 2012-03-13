@@ -3,13 +3,12 @@
 /*
  *	Fonction sur les List
  */
-List initList(int size){
+List initList(){
   List list = (List) malloc(sizeof(List_Param));
   if(list == NULL){
       fprintf(stderr, "Pas assez de mémoire\n");
       exit(1);      
   }
-  list->sizeofvalue = size;
   list->first = NULL;
   list->length = 0;
   return list;
