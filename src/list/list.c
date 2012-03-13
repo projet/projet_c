@@ -6,26 +6,20 @@
  *	Fonction qui pose probmème
  *	elle ne connais pas l'element
  */
-Elem getValue(Elem elem){
-  return elem;
-}
 
-void printList(List l){
- while(l != NULL){ 
-   printf("%d ", l->elem);
-   l = l->next;
-  }
-  printf("\n");
-}
-
-
-Cell* allouer(Elem elem){
+Cell* allouer(void* value, List list){
+  
   Cell* cell = (Cell*) malloc(sizeof(Cell));
   if(cell == NULL){
       fprintf(stderr, "Pas assez de mémoire\n");
       exit(1);      
   }
-  cell->elem = elem;
+  cell->value  = (void*) malloc(sizeof(sizeoftype));
+  if(cell == NULL){
+      fprintf(stderr, "Pas assez de mémoire\n");
+      exit(1);      
+  }
+  cell->value = value;
   return cell;
 }
 
@@ -37,16 +31,29 @@ void liberer(List *l){
     }
 }
 
-void insertFirst(List *l, Elem elem){
-  Cell* cell = allouer(elem);
+void insertFirst(List *l, void* value){
+  Cell* cell = allouer(value);
   cell->next = *l;
   *l = cell;
 }
 
+void printList(List l){
+ while(l != NULL){ 
+   printf("%d ", (int)(l->value));
+   l = l->next;
+  }
+  printf("\n");
+}
+
 int main(int agrc, char* argv[]){
     List l = NULL;
-    insertFirst(&l, 5) ;
+    int *i = malloc(sizeof(int));
+    *i=5;
+    insertFirst(&l, 5, sizeof(int)) ;
     printList(l); 
     liberer(&l);
     return 0;
 }
+
+
+
