@@ -47,7 +47,7 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 #ne passe pas par les .o#
 #cree un executable/test# 
 define TEST_COMPILE
-	$(CC) $(DEBUG) $(FLAGS) $^ -o $(TEST_DIR)$(@) 
+	-$(CC) $(DEBUG) $(FLAGS) $^ -o $(TEST_DIR)$(@) 
 	@echo "Le test: $(@) s'est correctement compilé"
 endef
 
@@ -57,8 +57,14 @@ endef
 test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c 
 	$(TEST_COMPILE)
 
+#	Test....	#
 test_list: src/list/list.c
 	$(TEST_COMPILE)
+
+
+
+
+
 
 
 
@@ -68,9 +74,9 @@ clean_obj :
 	rm -f $(OBJECTS) $(EXE)
 	@echo "Les Objets et exécutables ont bien étés supprimés"
 
-clean_test : $(TEST_DIR)*
-	rm -f $^
-	@echo "Les Tests ont bien étés supprimés"
+clean_test :
+	-rm -f $(TEST_DIR)*
+	@echo "Tests supprimés"
 
 
 
