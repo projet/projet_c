@@ -2,9 +2,9 @@
 #	-fichier .c			#
 #	-nom executable			#
 #	-nom des tests	(fin du fichier)#
-FILE = main.c intervalle_list.c intervalle.c entier.c list/list.c
+FILE = main.c intervalle_list.c intervalle.c entier.c list/list.c list/cell.c
 EXE = projet
-TEST = test_main test_list
+TEST = test_main test_list test_cell
 
 #	Les nom de repertoires:	#
 #	-sources		#
@@ -47,18 +47,23 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 #ne passe pas par les .o#
 #cree un executable/test# 
 define TEST_COMPILE
+	@echo ""
+	@echo "TEST: $@"
 	$(CC) $(DEBUG) $(FLAGS) $^ -D $@=1 -o $(TEST_DIR)$(@) 
 	@echo "Le test: $(@) s'est correctement compilé"
+	@echo "test:"
+	./$(TEST_DIR)$(@)
+	@echo "Le test: $(@) s'est correctement executé"
 endef
 
 #	Ecrire les make pour les test ici	#
 #	-<nom du test>: <dépendances>, <...>,	#
 #	-rajouter <le nom du test> dans TEST 	#
-test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c 
+test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c src/list/cell.c 
 	$(TEST_COMPILE)
-
-#	Test....	#
-test_list: src/list/list.c
+test_list: src/list/list.c src/list/cell.c
+	$(TEST_COMPILE)
+test_cell: src/list/cell.c
 	$(TEST_COMPILE)
 
 

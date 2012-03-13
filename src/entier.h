@@ -1,8 +1,6 @@
 #ifndef ENTIERS_H
 #define ENTIERS_H
 
-typedef int elem;
-#include "list/list.h"
 
 /*
  *	A voir comment on l'implémente

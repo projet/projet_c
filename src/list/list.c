@@ -1,8 +1,7 @@
 #include "list.h"
 
 /*
- *	Fonction qui pose probmème
- *	elle ne connais pas l'element
+ *	Fonction sur les List
  */
 List initList(int size){
   List list = (List) malloc(sizeof(List_Param));
@@ -16,19 +15,19 @@ List initList(int size){
   return list;
 }
 
-Cell* allouer(void* value, int sizeofvalue){  
-  Cell* cell = (Cell*) malloc(sizeof(Cell));
-  if(cell == NULL){
-      fprintf(stderr, "Pas assez de mémoire\n");
-      exit(1);      
-  }
-  cell->value = value;
-  /*memcpy(cell->value, value, sizeofvalue);*/
-  return cell;
+void insertFirst(List list, void* value){
+  cellList_insertFirst(&list->first, value);
+  list->length++;
+}
+
+void* removeFirst(List list){
+  void* res = cell_getValue(cellList_getCell(list->first));
+  cellList_removeFirst(&list->first);
+  return res;
 }
 
 void liberer(List list){
-    List_Chaine *l = &(list->first);
+    Cell_List *l = &(list->first);
     while(*l != NULL){
       Cell *cell = *l;
       *l = (*l)->next;
@@ -37,21 +36,11 @@ void liberer(List list){
     }
 }
 
-void insertFirst(List list, void* value){
-  Cell* cell = allouer(value, list->sizeofvalue);
-  cell->next = list->first;
-  list->first = cell;
-  list->length++;
-}
 
 
-void* getValue(Cell cell){
-  return cell.value;
-}
 
-Cell getFirst(List list){
-  return *list->first;
-}
+
+
 
 
 #ifdef test_list
@@ -64,25 +53,27 @@ typedef struct point{
     int y;
 }Point;
 
-int main(int agrc, char* argv[]){
-    
-  
-    printf("coucou\n");
-  
+int main(int argc, char* argv[]){  
     Point p1;
-    p1.x = p1.y = 7;    
+    p1.x = 1; p1.y = 2;  
+    Point p2;
+    p2.x = 3; p2.y = 4; 
     
     List list = initList(sizeof(Point));
-    insertFirst(list, &p1) ;
+    insertFirst(list, &p1);
+    insertFirst(list, &p2);  
     
-    p1.x = p1.y = 9;    
-    
-    Point* p2;
-    p2 = (Point*) getValue(getFirst(list));
-    
-    printf("p.x: %d, p.y: %d\n", p2->x, p2->y);
+    Point* test[2];
+    test[0] = (Point*) removeFirst(list);
+    test[1] = (Point*) removeFirst(list);
+     
+    /*
+    printf("p2.x: %d, p2.y: %d\n", test[0]->x, test[0]->y);
+    printf("p1.x: %d, p1.y: %d\n", test[1]->x, test[1]->y);
+    */
     liberer(list);
-    return 0;
+    
+    return !(test[0]->x==3 && test[0]->y==4 && test[1]->x==1 && test[1]->y==2);
 }
 #endif
 
