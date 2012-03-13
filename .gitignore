@@ -1,5 +1,6 @@
 # sauvegarde inutiles #
 *~
+*.kdev4
 
 # objets #
 *.o
