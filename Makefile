@@ -19,7 +19,6 @@ TEST_DIR = test/
 #	test: tests seul		#
 #	clean: clean_all + clean_test	#
 all : exe test
-exe: $(EXE)
 test: $(TEST)
 clean: clean_all clean_test
 
@@ -29,13 +28,14 @@ CC = gcc
 FLAGS = -Wall -ansi -Werror
 DEBUG = -g
 
+#	Les objets depuis un .c		#
 OBJECTS = $(FILE:%.c=$(OBJ_DIR)%.o)
 # SRC = $(FILE:%.c=$(SRC_DIR)%.c) # pas utilisé
 
 # 	le make du projet	 #
-$(EXE) : $(OBJECTS) 
+exe : $(OBJECTS) 
 	 $(CC) $(DEBUG) $(FLAGS) $(OBJECTS) -o $(EXE)
-	@echo "Executable: $< correctement compilé"
+	@echo "Le projet: $(EXE) s'est correctement compilé"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	$(CC) $(DEBUG) $(FLAGS) -c $< -o $@
