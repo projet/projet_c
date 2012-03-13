@@ -1,25 +1,26 @@
-#	Rajouter ici un nouveau .c	#
-#	Changer nom projet		#
-#	Rajouter un test		#
+#	Modifier ici
+#	-fichier .c			#
+#	-nom executable			#
+#	-nom des tests	(fin du fichier)#
 FILE = main.c intervalle_list.c intervalle.c entier.c list/list.c
 EXE = projet
 TEST = test_main test_list
 
 #	Les nom de repertoires:	#
-#	sources			#
-#	objets			#
-#	tests			#
+#	-sources		#
+#	-objets			#
+#	-tests			#
 SRC_DIR = src/
 OBJ_DIR = obj/
 TEST_DIR = test/
 
 #	Principaux mode de création	#
-#	all: executables + tests	#
-#	exe: executable seul		#
-#	test: tests seul		#
-#	clean: clean_all + clean_test	#
-all : exe test
-test: $(TEST)
+#	-all: executables + tests	#
+#	-exe: executable seul		#
+#	-test: tests seul		#
+#	-clean: clean_all + clean_test	#
+all : exe test help
+test: clean_test $(TEST)
 clean: clean_obj clean_test
 help: h
 
@@ -27,16 +28,11 @@ help: h
 CC = gcc
 FLAGS = -Wall -ansi -Werror
 DEBUG = -g
-
-#	Les objets depuis un .c		#
 OBJECTS = $(FILE:%.c=$(OBJ_DIR)%.o)
-# SRC = $(FILE:%.c=$(SRC_DIR)%.c) # pas utilisé
 
-#	help		#
-h:
-	@echo "Utilisation: make [all|exe|test|clean|clean_obj|clean_test]"
 
-# 	le make du projet	 #
+
+# 	Le projet	 #
 exe : $(OBJECTS) 
 	 $(CC) $(DEBUG) $(FLAGS) $(OBJECTS) -o $(EXE)
 	@echo "Le projet: $(EXE) s'est correctement compilé"
@@ -45,16 +41,6 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	$(CC) $(DEBUG) $(FLAGS) -c $< -o $@
 	@echo "Le fichier $< s'est correctement compilé"
 
-
-
-#	Les cleans	#
-clean_obj : 
-	rm -f $(OBJECTS) $(EXE)
-	@echo "Les Objets et exécutables ont bien étés supprimés"
-
-clean_test : $(TEST_DIR)*
-	rm -f $^
-	@echo "Les Tests ont bien étés supprimés"
 
 
 #	Les tests	#
@@ -73,3 +59,22 @@ test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/li
 
 test_list: src/list/list.c
 	$(TEST_COMPILE)
+
+
+
+
+#	Les cleans	#
+clean_obj : 
+	rm -f $(OBJECTS) $(EXE)
+	@echo "Les Objets et exécutables ont bien étés supprimés"
+
+clean_test : $(TEST_DIR)*
+	rm -f $^
+	@echo "Les Tests ont bien étés supprimés"
+
+
+
+
+#	help		#
+h:
+	@echo "Utilisation: make [all|exe|test|clean|clean_obj|clean_test]"
