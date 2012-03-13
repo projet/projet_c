@@ -2,7 +2,7 @@
 #define ENTIERS_H
 
 typedef int elem;
-#include "list.h"
+#include "list/list.h"
 
 /*
  *	A voir comment on l'implémente

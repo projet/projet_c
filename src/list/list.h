@@ -21,29 +21,30 @@ typedef struct cell {
 /*
  *	Une liste connais la taille d'une cellule et un pointeur vers la première cellule
  */
-typedef Cell* First;
+typedef Cell* List_Chaine;
 typedef struct list {
-    int sizeofvalue;
-    First first;
+  int length;  
+  int sizeofvalue;
+  List_Chaine first;
 }List;
 
 
 /*
  *	TODO:fonctions
  */
-List init(int size);
+List initList(int size);
 void insertFirst(List l, void* value);
 
 
 Cell* allouer( List l, void* value);
-
+void liberer(List l);
 
 
 /*
  *	fonctions faites.
  */
 
-void liberer(List *l);
+
 
 
 #endif

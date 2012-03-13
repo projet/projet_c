@@ -6,7 +6,7 @@
 #include "intervalle.h"
 
 typedef int Elem;
-#include "list.h"
+#include "list/list.h"
 
 /*
  *	Une liste d'intervalles

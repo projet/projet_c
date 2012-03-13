@@ -6,24 +6,33 @@
  *	Fonction qui pose probmème
  *	elle ne connais pas l'element
  */
+List initList(int size){
+  List list; 
+  list.first = NULL;
+  list.length = 0;
+  list.sizeofvalue = size; 
+  return list;
+}
 
-Cell* allouer(void* value, List list){
+Cell* allouer(List list, void* value){
   
   Cell* cell = (Cell*) malloc(sizeof(Cell));
   if(cell == NULL){
       fprintf(stderr, "Pas assez de mémoire\n");
       exit(1);      
   }
-  cell->value  = (void*) malloc(sizeof(sizeoftype));
+  cell->value  = (void*) malloc(sizeof(list.sizeofvalue));
   if(cell == NULL){
       fprintf(stderr, "Pas assez de mémoire\n");
       exit(1);      
   }
+  /* memcpy(cell->value, value, sizeoftype); */
   cell->value = value;
   return cell;
 }
 
-void liberer(List *l){
+void liberer(List list){
+    List_Chaine *l = &(list.first);
     while(*l != NULL){
       Cell *cell = *l;
       *l = (*l)->next;
@@ -31,13 +40,19 @@ void liberer(List *l){
     }
 }
 
-void insertFirst(List *l, void* value){
-  Cell* cell = allouer(value);
-  cell->next = *l;
-  *l = cell;
+void insertFirst(List list, void* value){
+  Cell* cell = allouer(list, value);
+  cell->next = list.first;
+  list.first = cell;
+  list.length++;
 }
 
-void printList(List l){
+
+/*
+ *	Fonctions de tests
+ */
+void printList(List list){
+ List_Chaine l = list.first;
  while(l != NULL){ 
    printf("%d ", (int)(l->value));
    l = l->next;
@@ -46,12 +61,11 @@ void printList(List l){
 }
 
 int main(int agrc, char* argv[]){
-    List l = NULL;
-    int *i = malloc(sizeof(int));
-    *i=5;
-    insertFirst(&l, 5, sizeof(int)) ;
-    printList(l); 
-    liberer(&l);
+    List list = initList(sizeof(int));
+    int i = 5;
+    insertFirst(list, &i) ;
+    printList(list); 
+    liberer(list);
     return 0;
 }
 
