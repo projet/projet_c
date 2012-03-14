@@ -19,6 +19,9 @@ Entier initEntier(char* s_entier){
    */
   list_insertFirst(entier.value, atoi(s_entier));
   entier.length = 1;
+  /*	
+   *Voila! COUCOU!
+   */
   
   return Entier;
 }
