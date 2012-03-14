@@ -4,7 +4,7 @@
 #	-nom des tests	(fin du fichier)#
 FILE = main.c intervalle_list.c intervalle.c entier.c list/list.c list/cell.c
 EXE = projet
-TEST = test_main test_list test_cell
+TEST = test_main test_list test_cell test_entier
 
 #	Les nom de repertoires:	#
 #	-sources		#
@@ -51,7 +51,6 @@ define TEST_COMPILE
 	@echo "TEST: $@"
 	$(CC) $(DEBUG) $(FLAGS) $^ -D $@=1 -o $(TEST_DIR)$(@) 
 	@echo "Le test: $(@) s'est correctement compilé"
-	@echo "test:"
 	./$(TEST_DIR)$(@)
 	@echo "Le test: $(@) s'est correctement executé"
 endef
@@ -65,7 +64,8 @@ test_list: src/list/list.c src/list/cell.c
 	$(TEST_COMPILE)
 test_cell: src/list/cell.c
 	$(TEST_COMPILE)
-
+test_entier: src/entier.c src/list/list.c
+	$(TEST_COMPILE)
 
 
 

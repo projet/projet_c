@@ -72,7 +72,7 @@ int main(int argc, char* argv[]){
   printf("i: %d\n", *test[3]);
   */
   
-  return !(*test[0]==3 && *test[1]==2 && *test[2]==1 && *test[3]==0);
+  return !(*test[0]==l && *test[1]==k && *test[2]==j && *test[3]==i);
 }
 
 

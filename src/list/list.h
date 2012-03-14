@@ -24,9 +24,9 @@ typedef List_Param* List;
 /*
  *	fonctions faites.
  */
-List initList();
-void insertFirst(List l, void* value);
-void liberer(List l);
+List list_initList();
+void list_insertFirst(List l, void* value);
+void list_liberer(List l);
 
 
 
