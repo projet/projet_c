@@ -1,12 +1,11 @@
 #ifndef ENTIERS_H
 #define ENTIERS_H
 
-#include "list/list.h"
-
 typedef unsigned char byte;
 
 typedef struct entier{
-  List value;
+  int length;
+  byte *value;
 }Entier;
 
 

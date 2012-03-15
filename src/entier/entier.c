@@ -12,30 +12,26 @@
 /* 
  * Tests si la chaîne de caractéres passer en arguments contient bien que des entiers 
  */
-int AreInt(char* s_entier){
+int isInteger(char* s_entier){
   int i, length=strlen(s_entier);
   for(i=0;i<length;i++)
     if(s_entier[i]<'0' || s_entier[i] > '9')
       return 0;
     return 1;
 }
-
+/*
 Entier initEntier(char* s_entier){
   Entier entier;   
   list_initList();
   
-  /*
-   *	TODO: a implémenter
-   */
+
   list_insertFirst(entier.value, atoi(s_entier));
   entier.length = 1;
-  /*	
-   *Voila! COUCOU!
-   */
+
   
   return Entier;
 }
-
+*/
 
 
 

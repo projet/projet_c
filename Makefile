@@ -2,9 +2,9 @@
 #	-fichier .c			#
 #	-nom executable			#
 #	-nom des tests	(fin du fichier)#
-FILE = main.c intervalle_list.c intervalle.c entier.c list/list.c list/cell.c
+FILE = main.c intervalle_list.c intervalle.c entier/entier.c entier/byte.c list/list.c list/cell.c
 EXE = projet
-TEST = test_main test_list test_cell test_entier
+TEST = test_main test_list test_cell test_entier test_byte
 
 #	Les nom de repertoires:	#
 #	-sources		#
@@ -58,15 +58,16 @@ endef
 #	Ecrire les make pour les test ici	#
 #	-<nom du test>: <dépendances>, <...>,	#
 #	-rajouter <le nom du test> dans $(TEST)	#
-test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier.c src/list/list.c src/list/cell.c 
+test_main: src/main.c src/intervalle_list.c src/intervalle.c src/entier/entier.c src/entier/byte.c src/list/list.c src/list/cell.c 
 	$(TEST_COMPILE)
 test_list: src/list/list.c src/list/cell.c
 	$(TEST_COMPILE)
 test_cell: src/list/cell.c
 	$(TEST_COMPILE)
-test_entier: src/entier.c src/list/list.c
+test_entier: src/entier/entier.c src/list/list.c src/list/cell.c
 	$(TEST_COMPILE)
-
+test_byte: src/entier/byte.c
+	$(TEST_COMPILE)
 
 
 

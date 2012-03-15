@@ -20,9 +20,34 @@ void list_insertFirst(List list, void* value){
 }
 
 void* list_removeFirst(List list){
+  
+  
+  /*
+   *
+   *	Ta premiere implementation qui marchait.
+   *
+  void* res = cell_getValue(cellList_getCell(list->first));
+  cellList_removeFirst(&list->first);
+  return res;
+  */
+  
+  
+  /*
+   *
+   *	Ta seconde implementation qui ne marchait pas : message d'erreur de conversion.
+   *
   void* res = cellList_removeFirst(&list->first);  
   return res;
+  */
+  
+  
+  /*
+   * Celle que j'ai faite
+   */
+  return cell_getValue(cellList_removeFirst(&list->first));
+ 
 }
+
 
 void list_liberer(List list){
     Cell_List *l = &(list->first);

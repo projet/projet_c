@@ -1,7 +1,7 @@
 #ifndef INTERVALLE_H
 #define INTERVALLE_H
 
-#include "entier.h"
+#include "entier/entier.h"
 
 
 /*
